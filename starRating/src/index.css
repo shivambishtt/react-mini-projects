@@ -1,0 +1,12 @@
+.gold {
+    color: goldenrod;
+}
+
+span {
+    font-size: 5vw;
+
+}
+
+span:hover {
+    cursor: pointer;
+}

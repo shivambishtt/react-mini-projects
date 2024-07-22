@@ -1,0 +1,48 @@
+.toast-container {
+    position: fixed;
+    top: 3vw;
+    right: 4vw;
+}
+
+.toast {
+    background-color: greenyellow;
+    width: 15vw;
+    padding: 1vw;
+    border-radius: 1vw;
+    position: relative;
+    font-size: 1.5vw;
+    margin-top: 2vw;
+    animation: toastAnimation 1s;
+
+    span {
+        position: absolute;
+        right: 1vw;
+        cursor: pointer;
+    }
+}
+
+.Info {
+    background-color: cornflowerblue;
+}
+
+.Success {
+    background-color: green;
+}
+
+.Warning {
+    background-color: yellow;
+}
+
+.Error {
+    background-color: red;
+}
+
+@keyframes toastAnimation {
+    0% {
+        transform: translateX(150%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
