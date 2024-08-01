@@ -1,0 +1,30 @@
+.accordionContainer {
+    position: absolute;
+    left: 25%;
+    top: 2%;
+    font-size: 1vw;
+}
+
+span{
+    top: 4%;
+    margin-left: 2vw;
+    font-size: 2vw;
+}
+/* .show-hide {
+    position: absolute;
+    background: none;
+    border-radius: 3vw;
+    left: 90%;
+    top: 15%;
+} */
+
+.answer {
+    font-size: 1.5vw;
+    font-weight: 200;
+}
+
+.accordion {
+    width: 50vw;
+    border: 2px solid black;
+    overflow: hidden;
+}

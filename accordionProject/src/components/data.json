@@ -1,0 +1,24 @@
+{
+  "faqs": [
+    {
+      "question": "What is frontend development?",
+      "answer": "FLKHNDFNDKFNHDNHKNKL"
+    },
+    {
+      "question": "What languages are used in frontend development?",
+      "answer": "Javascript ,HTML, CSS"
+    },
+    {
+      "question": "What are popular frontend frameworks?",
+      "answer": "Angular JS ,React JS , NEXT JS, VUE JS"
+    },
+    {
+      "question": "What is responsivee design?",
+      "answer": "Responsive design refers to the approach in which our web app can be view in any device flexibly"
+    },
+    {
+      "question": "What is DOM?",
+      "answer": "DOM refers to the Document Object Model"
+    }
+  ]
+}
