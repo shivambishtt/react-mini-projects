@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.stepper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 2vw;
+
+}
+
+.step-container {
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    font-size: 2vw;
+    margin-bottom: 4vw;
+}
+
+.step-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 4vw;
+    width: 4vw;
+    background-color: grey;
+    color: white;
+    position: relative;
+}
+
+.step-line {
+    position: absolute;
+    background-color: black;
+    height: 4vw;
+    width: 2px;
+    top: 4vw;
+}
+
+.active {
+    background-color: #017BFE;
+}
+
+.stepper-content {
+}
