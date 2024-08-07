@@ -1,0 +1,18 @@
+.tabs {
+    height: 50vh;
+    width: 30vw;
+    border: 2px solid black;
+}
+
+.btn {
+    margin: 1vw 1vw;
+}
+
+.tabs-content {
+    margin-top: 3vw;
+    height: 10vw;
+}
+
+.active {
+    border-bottom: none;
+}
