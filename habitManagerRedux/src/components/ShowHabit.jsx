@@ -1,23 +1,24 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, MenuItem, Paper, TextField, Typography } from '@mui/material'
 import CheckCircle from "@mui/icons-material/CheckCircle"
 import DeleteIcon from "@mui/icons-material/Delete"
 import EditIcon from '@mui/icons-material/Edit';
-import { removeHabit, toggleHabit, editHabit } from './store/habitSlice'
+import { removeHabit, toggleHabit, editHabit, filterHabit } from './store/habitSlice'
 
 function ShowHabit() {
     const habits = useSelector((state) => state.habit)
+    const filteredHabits = useSelector((state) => state.habit.filteredHabits);
     const today = new Date().toISOString().split("T")[0]
     const dispatch = useDispatch()
     const [isEditing, setIsEditing] = useState(null)
     const [newHabitName, setNewHabitName] = useState("")
-
-
-    // when we are completing the task we want to add that our streaks
+    const [filterName, setFilterName] = useState('');
+    const [filterCompleted, setFilterCompleted] = useState('');
+    const [filterFrequency, setFilterFrequency] = useState('');
 
     const handleEditButton = (habit) => {
-        setIsEditing(habit.id) //is habit id ko me edit kara chahta hu
+        setIsEditing(habit.id)
         setNewHabitName(habit.name)
     }
 
@@ -45,6 +46,11 @@ function ShowHabit() {
         }
         return streak
     }
+
+
+    const handleFilter = () => {
+        dispatch(filterHabit({ filterName, filterCompleted, filterFrequency }));
+    };
 
     return (
         <div>
@@ -138,6 +144,67 @@ function ShowHabit() {
                     </Paper>
                 })}
             </Box>
+
+
+            <Box sx={{ mb: 2 }}>
+                <TextField
+                    label="Filter by Habit Name"
+                    variant="outlined"
+                    value={filterName}
+                    onChange={(e) => setFilterName(e.target.value)}
+                />
+                <TextField
+                    select
+                    label="Completion Status"
+                    variant="outlined"
+                    value={filterCompleted}
+                    onChange={(e) => setFilterCompleted(e.target.value)}
+                    sx={{ ml: 2 }}
+                >
+                    <MenuItem value="">All</MenuItem>
+                    <MenuItem value="completed">Completed</MenuItem>
+                    <MenuItem value="notCompleted">Not Completed</MenuItem>
+                </TextField>
+                <TextField
+                    select
+                    label="Filter by Frequency"
+                    variant="outlined"
+                    value={filterFrequency}
+                    onChange={(e) => setFilterFrequency(e.target.value)}
+                    sx={{ ml: 2 }}
+                >
+                    <MenuItem value="">All</MenuItem>
+                    <MenuItem value="daily">Daily</MenuItem>
+                    <MenuItem value="weekly">Weekly</MenuItem>
+                    <MenuItem value="monthly">Monthly</MenuItem>
+                    {/* Add other frequency options as needed */}
+                </TextField>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleFilter}
+                    sx={{ ml: 2 }}>
+                    Filter
+                </Button>
+            </Box>
+
+
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 2
+                }}>
+                {filteredHabits?.map((habit) => (
+                    <Paper key={habit.id} elevation={2} sx={{ p: 2 }}>
+                        <Typography variant='h6'>{habit.name}</Typography>
+                        <Typography variant='body2' color='text.secondary'>
+                            Frequency: {habit.frequency}
+                        </Typography>
+                    </Paper>
+                ))}
+            </Box>
+
         </div>
     )
 }

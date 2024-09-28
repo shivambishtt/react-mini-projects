@@ -21,6 +21,7 @@ const habitSlice = createSlice({
         newName: action.payload.newName,
         frequency: action.payload.frequency || "daily",
         completedDate: [],
+        filteredHabits: [],
       };
       state.push(newHabit);
     },
@@ -78,9 +79,68 @@ const habitSlice = createSlice({
         };
       }
     },
+
+    // filterHabit: (state, action) => {
+    //   const { filterName, filterCompleted, filterFrequency } = action.payload;
+
+    //   // state.habits.filter fix
+    //   const filtered = state.habits.filter((habit) => {
+    //     const matchesName = habit.name
+    //       .toLowerCase()
+    //       .includes(filterName)
+    //       .toISOString()
+    //       .split("T")[0];
+
+    //     const matchesCompleted =
+    //       filterCompleted === "" ||
+    //       (filterCompleted === "completed" &&
+    //         habit.completedDate.includes(
+    //           new Date().toISOString().split("T")[0]
+    //         )) ||
+    //       (filterCompleted === "notCompleted" &&
+    //         !habit.completedDate.includes(
+    //           new Date().toISOString().split("T")[0]
+    //         ));
+
+    //     const matchesFrequency = filterFrequency
+    //       ? habit.frequency === filterFrequency
+    //       : true;
+
+    //     return matchesCompleted && matchesFrequency && matchesName;
+    //   });
+    //   state.filteredHabits = filtered;
+    // },
+    filterHabit: (state, action) => {
+      const { filterName, filterCompleted, filterFrequency } = action.payload;
+
+      const filtered = state.filter((habit) => {
+        const matchesName = filterName
+          ? habit.name.toLowerCase().includes(filterName.toLowerCase()) // Correctly compare names
+          : true;
+
+        const matchesCompleted =
+          filterCompleted === "" || // If no filter is applied, all habits match
+          (filterCompleted === "completed" &&
+            habit.completedDate.includes(
+              new Date().toISOString().split("T")[0]
+            )) || // Matches completed for today
+          (filterCompleted === "notCompleted" &&
+            !habit.completedDate.includes(
+              new Date().toISOString().split("T")[0]
+            )); // Matches not completed for today
+
+        const matchesFrequency = filterFrequency
+          ? habit.frequency === filterFrequency // Checks if frequency matches
+          : true;
+
+        return matchesCompleted && matchesFrequency && matchesName;
+      });
+
+      state.filteredHabits = filtered;
+    },
   },
 });
 
-export const { addHabit, toggleHabit, removeHabit, editHabit } =
+export const { addHabit, toggleHabit, removeHabit, editHabit, filterHabit } =
   habitSlice.actions;
 export default habitSlice.reducer;
