@@ -1,0 +1,13 @@
+.faq-data {
+  height: 12vw;
+  width: 90vw;
+  border: 1px solid black;
+  position: relative;
+}
+button {
+  position: absolute;
+  padding: 0.5vw 1vw;
+  top: 1vw;
+  right: 1vw;
+  border: none;
+}
