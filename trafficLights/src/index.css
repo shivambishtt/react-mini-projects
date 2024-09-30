@@ -1,0 +1,8 @@
+.light {
+  background-color: red;
+  height: 10vw;
+  border: 1px solid black;
+  margin: 2vw 0;
+  width: 10vw;
+  border-radius: 50%;
+}
