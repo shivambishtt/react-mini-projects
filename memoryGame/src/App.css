@@ -1,0 +1,14 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  text-align: center;
+}
+.card {
+  font-size: 5vw;
+  border-radius: 1vw;
+  margin: 1vw;
+  cursor: pointer;
+  height: 5vw;
+  border: 1px solid black;
+  width: 6vw;
+}
