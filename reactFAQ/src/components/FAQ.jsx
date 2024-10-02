@@ -6,8 +6,6 @@ function FAQ() {
     const [showIndex, setShowIndex] = useState(-1)
     const handleIndex = (index) => {
         setShowIndex((prevIndex) => {
-            // -1 === 0
-            // 0 === 0
             if (prevIndex === index) {
                 return -1
             }
